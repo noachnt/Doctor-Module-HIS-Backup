@@ -23,6 +23,7 @@
           <th>Date Issued</th>
           <th>Quantity</th>
           <th>Dosage</th>
+          <th>Prescriber</th>
           <th>Status</th>
         </tr>
 
@@ -45,6 +46,7 @@
                 <td><?php echo date('d F Y', $row->date_issued) ?></td>
                 <td><?php echo $row->quantity; ?></td>
                 <td><?php echo $row->dosage; ?></td>
+                <td><?php echo $row->prescriber; ?></td>
                 <td><?php echo $row->process_status; ?></td>
               <tr>
 

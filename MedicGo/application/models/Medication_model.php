@@ -34,5 +34,11 @@ class Medication_model extends CI_Model
     return $query;
   }
 
+  function fetch_data_doctor()
+  {
+    $query = $this->db->get("doctor");
+    return $query;
+  }
+
 
 }

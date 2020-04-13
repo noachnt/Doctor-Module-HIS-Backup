@@ -34,6 +34,8 @@ class Medication extends CI_Controller
       $this->load->model("Medication_model");
       $data["fetch_data_drugs"] = $this->Medication_model->fetch_data_drugs();
       $data["fetch_data_patient"] = $this->Medication_model->fetch_data_patient();
+      $data["fetch_data_doctor"] = $this->Medication_model->fetch_data_doctor();
+
 
       $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
       $this->load->view('templates/header', $data);
@@ -48,6 +50,7 @@ class Medication extends CI_Controller
     $this->load->library('form_validation');
 
     $this->form_validation->set_rules("patient_id", "Patient ID", 'required');
+    $this->form_validation->set_rules("prescriber", "Prescriber", 'required');
     $this->form_validation->set_rules("diagnoses", "Diagnoses", 'required');
     $this->form_validation->set_rules("drug_name", "Drugs", 'required');
     $this->form_validation->set_rules("quantity", "Quantity", 'required');
@@ -59,6 +62,7 @@ class Medication extends CI_Controller
       // $time = date('Y-m-d H:i:s');
       // $status = "on progress";
       $data = array(
+        "prescriber"  =>$this->input->post("prescriber"),
         "diagnoses"  =>$this->input->post("diagnoses"),
         "drug_name"   =>$this->input->post("drug_name"),
         "quantity"   =>$this->input->post("quantity"),

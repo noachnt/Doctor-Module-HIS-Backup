@@ -31,6 +31,22 @@
             </div>
 
             <br>
+            <label>Prescriber</label>
+            <select class="form-control" name="prescriber">
+            <?php
+
+            foreach($fetch_data_doctor->result() as $row)
+            {
+              $fullname = $row->first_name."-".$row->last_name;
+              echo '<option value="'.$fullname.'">'.$fullname.'</option>';
+            }
+            ?>
+            </select>
+            <span class ="text-danger"> <?php echo form_error("drug_name"); ?> </span>
+
+            <br>
+            <br>
+            <br>
 
             <div class="form-group">
               <label for="diagnoses">Diagoses</label>
