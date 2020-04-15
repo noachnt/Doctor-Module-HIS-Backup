@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 13, 2020 at 03:51 PM
+-- Generation Time: Apr 15, 2020 at 03:51 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.14
 
@@ -21,6 +21,59 @@ SET time_zone = "+00:00";
 --
 -- Database: `hisinformatics`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `completed_requests`
+--
+
+CREATE TABLE `completed_requests` (
+  `id` int(11) NOT NULL,
+  `item_name` varchar(128) NOT NULL,
+  `notes` varchar(128) NOT NULL,
+  `completed_on` varchar(128) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `user_email` varchar(128) NOT NULL,
+  `symptoms` varchar(128) NOT NULL,
+  `blood_type` varchar(128) NOT NULL,
+  `blood_pressure` varchar(128) NOT NULL,
+  `height` int(11) NOT NULL,
+  `weight` int(11) NOT NULL,
+  `blood_glucose` varchar(128) NOT NULL,
+  `allergies` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `completed_requests`
+--
+
+INSERT INTO `completed_requests` (`id`, `item_name`, `notes`, `completed_on`, `user_id`, `user_email`, `symptoms`, `blood_type`, `blood_pressure`, `height`, `weight`, `blood_glucose`, `allergies`) VALUES
+(35, 'Hayasaka', 'collected', '1586294169', 14, 'admin@gmail.com', 'abc', 'B', 'abc', 55, 55, 'abc', 'abc'),
+(36, 'Matius', 'pusing', '1586931403', 12, 'noach@gmail.com', 'pusing', 'A', '1', 1, 1, '1', 'lebah');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `completed_requests_radiology`
+--
+
+CREATE TABLE `completed_requests_radiology` (
+  `id` int(11) NOT NULL,
+  `item_name` varchar(128) NOT NULL,
+  `image` varchar(128) NOT NULL,
+  `notes` varchar(128) NOT NULL,
+  `completed_on` varchar(128) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `user_email` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `completed_requests_radiology`
+--
+
+INSERT INTO `completed_requests_radiology` (`id`, `item_name`, `image`, `notes`, `completed_on`, `user_id`, `user_email`) VALUES
+(1, 'Matius', '', 'gila', '1586931770', 12, 'noach@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -109,6 +162,51 @@ INSERT INTO `patient` (`patient_id`, `first_name`, `last_name`, `gender`, `DOB`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `request`
+--
+
+CREATE TABLE `request` (
+  `id` int(11) NOT NULL,
+  `item_name` varchar(128) NOT NULL,
+  `notes` varchar(128) NOT NULL,
+  `last_modified` varchar(128) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `user_email` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `request`
+--
+
+INSERT INTO `request` (`id`, `item_name`, `notes`, `last_modified`, `user_id`, `user_email`) VALUES
+(68, 'Chika Fujiwara', 'wiener', '1586295100', 14, 'admin@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `request_radiology`
+--
+
+CREATE TABLE `request_radiology` (
+  `id` int(11) NOT NULL,
+  `item_name` varchar(128) NOT NULL,
+  `notes` varchar(128) NOT NULL,
+  `last_modified` varchar(128) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `user_email` varchar(128) NOT NULL,
+  `image` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `request_radiology`
+--
+
+INSERT INTO `request_radiology` (`id`, `item_name`, `notes`, `last_modified`, `user_id`, `user_email`, `image`) VALUES
+(3, 'Ferinzhy Halik', 'test', '1586295651', 14, 'admin@gmail.com', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -136,7 +234,8 @@ INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_a
 (11, 'Test User 2', 'test2@gmail.com', 'default.jpg', '$2y$10$AxIFpralfdwhQDmqbe7ZNepzoaLHM.TMHg126fSOmdtaF7sghv8oe', 3, 1, 1585709923),
 (12, 'Noach T', 'noach@gmail.com', '2986071.jpg', '$2y$10$ce.bZruCm2PBAD5utcIkuOm1j0oxX8nH3dQJ65kuyYwl6gFVDWN4e', 3, 1, 1585710770),
 (13, 'Denny Edit', 'denny@gmail.com', 'default.jpg', '$2y$10$yOaZUZxhdhZl9m66Izp0E.4S6wYulKAJqcPSDf7sblQYrHWq9Oim6', 1, 1, 1585722596),
-(14, 'testuser99', 'testuser99@gmail.com', 'default.jpg', '$2y$10$8kyJx4j6UDOBHcOTkE8L0.NV4fT/4.n0Be/99X/h698d8ncjU4Rv2', 3, 1, 1586343930);
+(14, 'testuser99', 'testuser99@gmail.com', 'default.jpg', '$2y$10$8kyJx4j6UDOBHcOTkE8L0.NV4fT/4.n0Be/99X/h698d8ncjU4Rv2', 3, 1, 1586343930),
+(15, 'farrel', 'farrel@gmail.com', 'default.jpg', '$2y$10$qDUnBV0dICtdxw0oon4a8ur8a5vRPVuAwBZ6q5TGNwwRfIDe0XDEm', 5, 1, 1586786734);
 
 -- --------------------------------------------------------
 
@@ -162,7 +261,9 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (5, 1, 4),
 (6, 3, 3),
 (12, 3, 2),
-(13, 3, 11);
+(13, 3, 11),
+(15, 5, 12),
+(16, 3, 12);
 
 -- --------------------------------------------------------
 
@@ -184,7 +285,8 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (2, 'User'),
 (3, 'Patient'),
 (4, 'Menu'),
-(11, 'Medication');
+(11, 'Medication'),
+(12, 'Lab');
 
 -- --------------------------------------------------------
 
@@ -239,7 +341,11 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (15, 11, 'Request new prescription', 'medication/requestprescription', 'fas fa-fw fa-clipboard-list', 1),
 (16, 11, 'View request', 'medication/viewrequest', 'fa-fw fas fa-eye', 1),
 (17, 2, 'Change Password', 'user/changepassword', 'fas fa-fw fa-key', 1),
-(19, 11, 'View completed request', 'medication/requestcompleted', 'fa-fw far fa-check-circle', 1);
+(19, 11, 'View completed request', 'medication/requestcompleted', 'fa-fw far fa-check-circle', 1),
+(21, 12, 'Lab Request', 'lab/request', 'fas fa-cloud-upload-alt', 1),
+(22, 12, 'Lab Request - Radiology', 'lab/request_radiology', 'fas fa-cloud-upload-alt', 1),
+(23, 12, 'Completed Request', 'lab/completed_list', 'far fa-address-book', 1),
+(24, 12, 'Completed Request - Radiology', 'lab/completed_list_radiology', 'far fa-address-book', 1);
 
 -- --------------------------------------------------------
 
@@ -272,6 +378,18 @@ INSERT INTO `view_completed_prescription` (`id`, `first_name`, `last_name`, `pat
 --
 
 --
+-- Indexes for table `completed_requests`
+--
+ALTER TABLE `completed_requests`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `completed_requests_radiology`
+--
+ALTER TABLE `completed_requests_radiology`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `doctor`
 --
 ALTER TABLE `doctor`
@@ -288,6 +406,18 @@ ALTER TABLE `drugs`
 --
 ALTER TABLE `patient`
   ADD PRIMARY KEY (`patient_id`);
+
+--
+-- Indexes for table `request`
+--
+ALTER TABLE `request`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `request_radiology`
+--
+ALTER TABLE `request_radiology`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -331,6 +461,18 @@ ALTER TABLE `view_completed_prescription`
 --
 
 --
+-- AUTO_INCREMENT for table `completed_requests`
+--
+ALTER TABLE `completed_requests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT for table `completed_requests_radiology`
+--
+ALTER TABLE `completed_requests_radiology`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
@@ -349,22 +491,34 @@ ALTER TABLE `patient`
   MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `request`
+--
+ALTER TABLE `request`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+
+--
+-- AUTO_INCREMENT for table `request_radiology`
+--
+ALTER TABLE `request_radiology`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_role`
@@ -376,7 +530,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `view_completed_prescription`
